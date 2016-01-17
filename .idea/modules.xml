@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao-library/dao-library.iml" filepath="$PROJECT_DIR$/dao-library/dao-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao-library-android/dao-library-android.iml" filepath="$PROJECT_DIR$/dao-library-android/dao-library-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab5-accounts-android.iml" filepath="$PROJECT_DIR$/lab5-accounts-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lab5-accounts-model/lab5-accounts-model.iml" filepath="$PROJECT_DIR$/lab5-accounts-model/lab5-accounts-model.iml" />
+    </modules>
+  </component>
+</project>

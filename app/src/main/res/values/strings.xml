@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Home Accounts App</string>
+    <string name="account_list_refresh_button_description">Refresh accounts list</string>
+    <string name="account_list_add_button_description">Add account</string>
+    <string name="account_list_item_remove_button_description">Remove account</string>
+    <string name="account_list_item_info_button_description">Show account info</string>
+    <string name="account_add_button_text">ADD</string>
+    <string name="account_name_label_text">Name:</string>
+    <string name="account_balance_label_text">Balance:</string>
+    <string name="account_description_label_text">Description:</string>
+</resources>
