@@ -27,17 +27,17 @@ public class AccountListAdapter extends ItemActivityDaoListAdapterImpl<Account, 
 
     @LayoutRes
     protected int getDeleteAccountDialogLayoutId() {
-        throw new UnsupportedOperationException();
+        return R.layout.dialog_list_item_account_delete;
     }
 
     @IdRes
-    protected int getDeleteAccountDialogOthersSpinnerId() {
-        throw new UnsupportedOperationException();
+    protected int getDeleteAccountDialogHeirsSpinnerId() {
+        return R.id.dialog_list_item_account_delete_spinner_heirs;
     }
 
     @IdRes
     protected int getDeleteAccountDialogButtonId() {
-        throw new UnsupportedOperationException();
+        return R.id.dialog_list_item_account_delete_button;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class AccountListAdapter extends ItemActivityDaoListAdapterImpl<Account, 
 
             final Dialog dialog = viewDialog.create();
 
-            final Spinner spinner = AndroidUtils.findViewById(dialogView, getDeleteAccountDialogOthersSpinnerId());
+            final Spinner spinner = AndroidUtils.findViewById(dialogView, getDeleteAccountDialogHeirsSpinnerId());
             ArrayAdapter<Account> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_dropdown_item, others);
             spinner.setAdapter(adapter);
 

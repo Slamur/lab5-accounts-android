@@ -49,7 +49,7 @@ implements ListItemActivity<ItemType, ItemActivityDaoType, ItemActivityProviderT
 
         onListActivityCreate(savedInstanceState);
 
-        provider.loadItems();
+        refreshItems();
     }
 
     protected abstract ItemActivityListAdapterType createListAdapter();

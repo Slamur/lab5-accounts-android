@@ -9,14 +9,9 @@ import java.util.List;
 public class AccountDaoImpl extends ListDaoImpl<Account>
 implements AccountDao {
 
-    protected long nextAccountId;
-
     public AccountDaoImpl() {
         super();
-
-        this.nextAccountId = 0;
     }
-
 
     @Override
     protected void removeItemInfo(Account item) {
@@ -25,14 +20,11 @@ implements AccountDao {
 
     @Override
     protected void setItemInfo(Account item, Object... itemInfo) {
-        this.nextAccountId = Math.max(nextAccountId, item.getId() + 1);
+
     }
 
     protected Account createAccount(String name, double balance, String description) {
-        Account account = new Account(nextAccountId, name, balance, description);
-        ++nextAccountId;
-
-        return account;
+        return new Account(generateNextItemId(), name, balance, description);
     }
 
     @Override

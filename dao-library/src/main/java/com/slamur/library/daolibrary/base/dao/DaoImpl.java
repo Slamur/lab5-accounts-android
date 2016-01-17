@@ -19,9 +19,18 @@ public abstract class DaoImpl<
     implements Dao<ItemType> {
 
     protected ItemCollectionType items;
+    protected long nextItemId;
 
     protected DaoImpl(ItemCollectionType items) {
         this.items = items;
+        this.nextItemId = 0;
+    }
+
+    protected long generateNextItemId() {
+        long id = nextItemId;
+        ++nextItemId;
+
+        return id;
     }
 
     @Override
@@ -37,6 +46,15 @@ public abstract class DaoImpl<
     protected abstract void removeItemInfo(ItemType item);
 
     protected abstract void setItemInfo(ItemType item, Object... itemInfo);
+
+    /**
+     * Internal method for calling after updating of all items
+     */
+    protected void afterUpdatedItems() {
+        for (ItemType item : items) {
+            this.nextItemId = Math.max(nextItemId, item.getId() + 1);
+        }
+    }
 
     protected List<ItemType> filterItems(ItemPredicate<ItemType> predicate) {
         List<ItemType> filtered = new ArrayList<>();

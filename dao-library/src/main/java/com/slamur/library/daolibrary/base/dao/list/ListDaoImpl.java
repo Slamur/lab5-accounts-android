@@ -2,8 +2,8 @@ package com.slamur.library.daolibrary.base.dao.list;
 
 import com.slamur.library.daolibrary.base.Item;
 import com.slamur.library.daolibrary.base.collection.list.ItemList;
-import com.slamur.library.daolibrary.base.dao.DaoImpl;
 import com.slamur.library.daolibrary.base.dao.DaoEvent;
+import com.slamur.library.daolibrary.base.dao.DaoImpl;
 
 import java.util.List;
 
@@ -70,8 +70,10 @@ public abstract class ListDaoImpl<
             items.add(updatedItems.get(index));
         }
 
+        afterUpdatedItems();
+
         // -----<=====|
-        notifyListeners(createListEvent(DaoEvent.Action.UPDATE, null, -1));
+//        notifyListeners(createListEvent(DaoEvent.Action.UPDATE, null, -1));
     }
 
     protected void updateItem(int index, ItemType updatedItem, Object... itemInfo) {

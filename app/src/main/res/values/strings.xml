@@ -4,8 +4,22 @@
     <string name="account_list_add_button_description">Add account</string>
     <string name="account_list_item_remove_button_description">Remove account</string>
     <string name="account_list_item_info_button_description">Show account info</string>
-    <string name="account_add_button_text">ADD</string>
+    <string name="account_add_button_text">Add account</string>
     <string name="account_name_label_text">Name:</string>
     <string name="account_balance_label_text">Balance:</string>
     <string name="account_description_label_text">Description:</string>
+    <string name="menu_activity_list_accounts_operation_action_text">Operations</string>
+    <string name="activity_list_accounts_label">Accounts</string>
+    <string name="activity_info_account_label">Account Add/Info</string>
+    <string name="menu_activity_list_accounts_income_action_text">Incomes</string>
+    <string name="menu_activity_list_accounts_expense_action_text">Expenses</string>
+    <string name="dialog_list_item_account_delete_button_text">DELETE</string>
+    <string name="activity_list_categories_add_button_description">Add category</string>
+    <string name="activity_list_categories_refresh_button_description">Refresh categories list</string>
+    <string name="list_item_category_remove_button_description">Remove category</string>
+    <string name="list_item_category_info_button_description">Show category info</string>
+    <string name="activity_list_categories_label_default_text">Categories</string>
+    <string name="activity_info_category_add_button_text">Add %s category</string>
+    <string name="activity_list_categories_label">Categories</string>
+    <string name="activity_info_category_label">Category add/show</string>
 </resources>

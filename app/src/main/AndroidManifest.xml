@@ -6,7 +6,7 @@
 
         <activity
             android:name=".activity.account.AccountListActivity"
-            android:label="@string/app_name" >
+            android:label="@string/activity_list_accounts_label" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -15,7 +15,25 @@
         </activity>
         <activity
             android:name=".activity.account.AccountInfoActivity"
-            android:label="@string/app_name" >
+            android:label="@string/activity_info_account_label" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.category.CategoryListActivity"
+            android:label="@string/activity_list_categories_label" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.category.CategoryInfoActivity"
+            android:label="@string/activity_info_category_label" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

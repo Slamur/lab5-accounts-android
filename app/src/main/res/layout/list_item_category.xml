@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/account_list_item_padding">
+
+    <TextView
+        android:id="@+id/list_item_category_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/account_list_item_view_padding" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/list_item_category_remove"
+            android:contentDescription="@string/list_item_category_remove_button_description"
+            android:background="@android:drawable/ic_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/list_item_category_info"
+            android:contentDescription="@string/list_item_category_info_button_description"
+            android:background="@android:drawable/ic_menu_info_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/list_item_category_remove"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

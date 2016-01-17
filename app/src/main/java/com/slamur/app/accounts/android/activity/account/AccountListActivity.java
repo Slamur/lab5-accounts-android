@@ -3,9 +3,12 @@ package com.slamur.app.accounts.android.activity.account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.slamur.app.accounts.android.R;
+import com.slamur.app.accounts.android.activity.category.CategoryActivity;
+import com.slamur.app.accounts.android.activity.category.CategoryListActivity;
 import com.slamur.app.accounts.android.dao.account.AccountActivityDao;
 import com.slamur.app.accounts.android.dao.account.AccountBaseDao;
 import com.slamur.app.accounts.android.list_view.account.AccountListAdapter;
@@ -78,20 +81,43 @@ implements AccountActivity {
     }
 
     @IdRes
-    protected int getCategoriesMenuItemId() {
-        throw new UnsupportedOperationException();
+    protected int getIncomeCategoriesMenuItemId() {
+        return R.id.menu_activity_list_accounts_income_action;
+    }
+
+    @IdRes
+    protected int getExpenseCategoriesMenuItemId() {
+        return R.id.menu_activity_list_accounts_expense_action;
     }
 
     @IdRes
     protected int getOperationsMenuItemId() {
-        throw new UnsupportedOperationException();
+        return R.id.menu_activity_list_accounts_operation_action;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_activity_list_accounts, menu);
+        return true;
+    }
+
+    protected void startCategoriesListActivity(int categoryTypeExtra) {
+        Bundle extras = new Bundle();
+        extras.putInt(CategoryActivity.CATEGORY_TYPE_EXTRA, categoryTypeExtra);
+
+        startActivity(CategoryListActivity.class, extras);
     }
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
-        if (getCategoriesMenuItemId() == item.getItemId()) {
-            throw new UnsupportedOperationException();
+        if (getIncomeCategoriesMenuItemId() == item.getItemId()) {
+            startCategoriesListActivity(CategoryActivity.INCOME_TYPE);
+        }
+
+        if (getExpenseCategoriesMenuItemId() == item.getItemId()) {
+            startCategoriesListActivity(CategoryActivity.EXPENSE_TYPE);
         }
 
         if (getOperationsMenuItemId() == item.getItemId()) {

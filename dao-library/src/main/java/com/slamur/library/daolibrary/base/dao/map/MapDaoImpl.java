@@ -42,6 +42,8 @@ public abstract class MapDaoImpl<
         notifyListeners(createMapEvent(DaoEvent.Action.ADD, item, key));
     }
 
+    // TODO rework (will be infinite loop in some cases)
+    @Deprecated
     protected void updateItems(KeyItemMap<KeyType, ItemType> updatedItems) {
         for (KeyType key : items.keySet()) {
             if (!updatedItems.containsKey(key)) {

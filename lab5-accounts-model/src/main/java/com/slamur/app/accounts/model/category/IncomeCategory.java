@@ -1,7 +1,6 @@
-package com.slamur.app.accounts.model.category.income;
+package com.slamur.app.accounts.model.category;
 
 import com.slamur.app.accounts.model.account.Account;
-import com.slamur.app.accounts.model.category.Category;
 
 public class IncomeCategory extends Category {
 
@@ -11,7 +10,7 @@ public class IncomeCategory extends Category {
         INCOME_SOURCE = new Account(-1, "Income", 0, "Income category fictive account");
     }
 
-    public IncomeCategory(long id, String name) {
-        super(id, name);
+    public IncomeCategory(long id, String name, String description) {
+        super(id, name, description);
     }
 }

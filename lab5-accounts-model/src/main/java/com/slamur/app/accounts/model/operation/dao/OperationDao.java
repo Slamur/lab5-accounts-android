@@ -1,8 +1,8 @@
 package com.slamur.app.accounts.model.operation.dao;
 
 import com.slamur.app.accounts.model.account.Account;
-import com.slamur.app.accounts.model.category.expense.ExpenseCategory;
-import com.slamur.app.accounts.model.category.income.IncomeCategory;
+import com.slamur.app.accounts.model.category.ExpenseCategory;
+import com.slamur.app.accounts.model.category.IncomeCategory;
 import com.slamur.app.accounts.model.operation.Operation;
 import com.slamur.library.daolibrary.base.dao.list.ListDao;
 

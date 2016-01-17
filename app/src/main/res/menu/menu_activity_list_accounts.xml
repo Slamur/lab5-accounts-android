@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AccountListActivity">
+
+    <item android:id="@+id/menu_activity_list_accounts_income_action" android:title="@string/menu_activity_list_accounts_income_action_text"
+        android:orderInCategory="100" android:showAsAction="ifRoom" />
+
+    <item android:id="@+id/menu_activity_list_accounts_expense_action" android:title="@string/menu_activity_list_accounts_expense_action_text"
+        android:orderInCategory="100" android:showAsAction="ifRoom" />
+
+    <item android:id="@+id/menu_activity_list_accounts_operation_action" android:title="@string/menu_activity_list_accounts_operation_action_text"
+        android:orderInCategory="100" android:showAsAction="ifRoom" />
+
+</menu>

@@ -3,7 +3,6 @@ package com.slamur.app.accounts.android.activity.account;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.text.InputType;
-import android.view.View;
 import android.widget.EditText;
 
 import com.slamur.app.accounts.android.R;
@@ -34,6 +33,7 @@ implements AccountActivity {
 
         mBalanceView = AndroidUtils.findViewById(this, getBalanceViewId());
         mBalanceView.setInputType(InputType.TYPE_CLASS_NUMBER);
+        mBalanceView.setText(Double.toString(0));
 
         mDescriptionView = AndroidUtils.findViewById(this, getDescriptionViewId());
     }

@@ -2,9 +2,9 @@ package com.slamur.app.accounts.model.operation.dao;
 
 import com.slamur.app.accounts.model.account.Account;
 import com.slamur.app.accounts.model.category.Category;
-import com.slamur.app.accounts.model.category.expense.ExpenseCategory;
-import com.slamur.app.accounts.model.category.income.IncomeCategory;
-import com.slamur.app.accounts.model.category.remittance.RemittanceCategory;
+import com.slamur.app.accounts.model.category.ExpenseCategory;
+import com.slamur.app.accounts.model.category.IncomeCategory;
+import com.slamur.app.accounts.model.category.RemittanceCategory;
 import com.slamur.app.accounts.model.operation.Operation;
 import com.slamur.app.accounts.model.operation.OperationType;
 import com.slamur.library.daolibrary.base.dao.list.ListDaoImpl;
@@ -16,19 +16,12 @@ import java.util.List;
 public class OperationDaoImpl extends ListDaoImpl<Operation>
 implements OperationDao {
 
-    private long nextOperationId;
-
     public OperationDaoImpl() {
         super();
-
-        nextOperationId = 0;
     }
 
     protected Operation createOperation(Date date, OperationType type, Category category, double value, Account source, Account target, String description) {
-        Operation operation = new Operation(nextOperationId, date, type, category, value, source, target, description);
-        ++nextOperationId;
-
-        return operation;
+        return new Operation(generateNextItemId(), date, type, category, value, source, target, description);
     }
 
     protected Operation addOperation(Date date, OperationType type, Category category, double value, Account source, Account target, String description) {

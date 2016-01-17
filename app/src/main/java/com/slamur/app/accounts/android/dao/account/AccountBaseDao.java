@@ -29,7 +29,6 @@ implements AccountActivityProvider {
             List<Account> accounts = AccountsSettingsUtils.getAccounts(context);
             instance.updateItems(accounts);
 
-            // TODO uncomment, if we need save state, not only load
             instance.addListener(instance);
         }
 
