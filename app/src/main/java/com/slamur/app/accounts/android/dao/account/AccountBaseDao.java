@@ -2,14 +2,18 @@ package com.slamur.app.accounts.android.dao.account;
 
 import android.content.Context;
 
+import com.slamur.app.accounts.android.dao.operation.OperationBaseDao;
 import com.slamur.app.accounts.android.provider.account.AccountActivityProvider;
 import com.slamur.app.accounts.android.settings.AccountsSettingsUtils;
 import com.slamur.app.accounts.model.account.Account;
 import com.slamur.app.accounts.model.account.dao.AccountDaoImpl;
 import com.slamur.app.accounts.model.account.dao.AccountRemoveEvent;
+import com.slamur.app.accounts.model.operation.Operation;
+import com.slamur.app.accounts.model.operation.OperationType;
 import com.slamur.library.daolibrary.base.dao.DaoEvent;
 import com.slamur.library.daolibrary.base.dao.list.ListEvent;
 import com.slamur.library.daolibrary.base.event.Event;
+import com.slamur.library.daolibrary.base.event.Listener;
 import com.slamur.library.daolibrary.base.gson.GsonUtils;
 import com.slamur.library.daolibrary.base.provider.event.ItemLoadEvent;
 import com.slamur.library.daolibrary.base.provider.event.ItemParameterLoadEvent;
@@ -30,6 +34,27 @@ implements AccountActivityProvider {
             instance.updateItems(accounts);
 
             instance.addListener(instance);
+
+            OperationBaseDao.getInstance(context).addListener(new Listener<Operation>() {
+                @Override
+                public void onEvent(Event<Operation> event) {
+                    if (event instanceof DaoEvent) {
+                        DaoEvent<Operation> operationDaoEvent = event.toType();
+
+                        Operation operation = operationDaoEvent.getItem();
+
+                        if (operation.getType() != OperationType.INCOME) {
+                            int sourceIndex = instance.getIndex(operation.getSource());
+                            instance.updateItem(sourceIndex, operation.getSource());
+                        }
+
+                        if (operation.getType() != OperationType.EXPENSE) {
+                            int targetIndex = instance.getIndex(operation.getTarget());
+                            instance.updateItem(targetIndex, operation.getTarget());
+                        }
+                    }
+                }
+            });
         }
 
         return instance;
@@ -82,7 +107,6 @@ implements AccountActivityProvider {
             AccountsSettingsUtils.setStringValue(context, AccountsSettingsUtils.ACCOUNT_DAO_KEY, GsonUtils.toJson(accounts));
         } else if (event instanceof AccountRemoveEvent) {
             AccountRemoveEvent accountRemoveEvent = event.toType();
-
             this.removeAccount(accountRemoveEvent.getIndex(), accountRemoveEvent.getHeir());
         } else if (event instanceof ListEvent) {
             ListEvent<Account> listEvent = event.toType();
@@ -91,9 +115,8 @@ implements AccountActivityProvider {
             int index = listEvent.getIndex();
 
             if (listEvent.isAction(DaoEvent.Action.ADD)) {
-                this.addAccount(account.getName(), account.getBalance(), account.getDescription());
-            } else if (listEvent.isAction(DaoEvent.Action.UPDATE)) {
-                this.updateItem(index, account);
+//                this.addAccount(account.getName(), account.getBalance(), account.getDescription());
+                this.addItem(account);
             } else if (listEvent.isAction(DaoEvent.Action.REMOVE)) {
 
             }

@@ -1,6 +1,7 @@
 package com.slamur.library.daolibrary.android;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.IdRes;
 import android.view.View;
@@ -15,6 +16,10 @@ public class AndroidUtils {
 
     public static <ViewType> ViewType findViewById(Activity activity, @IdRes int viewId) {
         return (ViewType) activity.findViewById(viewId);
+    }
+
+    public static <ViewType> ViewType findViewById(Dialog dialog, @IdRes int viewId) {
+        return (ViewType) dialog.findViewById(viewId);
     }
 
     public static void setText(Activity activity, int textViewId, String text) {

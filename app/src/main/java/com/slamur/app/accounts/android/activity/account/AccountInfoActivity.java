@@ -32,7 +32,7 @@ implements AccountActivity {
         mNameView = AndroidUtils.findViewById(this, getNameViewId());
 
         mBalanceView = AndroidUtils.findViewById(this, getBalanceViewId());
-        mBalanceView.setInputType(InputType.TYPE_CLASS_NUMBER);
+        mBalanceView.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
         mBalanceView.setText(Double.toString(0));
 
         mDescriptionView = AndroidUtils.findViewById(this, getDescriptionViewId());

@@ -33,6 +33,8 @@ public abstract class ListDaoImpl<
         return items.get(index);
     }
 
+    protected int getIndex(ItemType item) { return items.indexOf(item); }
+
     protected void addItem(ItemType item, Object... itemInfo) {
         items.add(item);
 

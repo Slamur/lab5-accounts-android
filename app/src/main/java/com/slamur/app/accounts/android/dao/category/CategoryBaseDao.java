@@ -5,9 +5,8 @@ import android.content.Context;
 import com.slamur.app.accounts.android.provider.category.CategoryActivityProvider;
 import com.slamur.app.accounts.android.settings.AccountsSettingsUtils;
 import com.slamur.app.accounts.model.category.Category;
-import com.slamur.app.accounts.model.category.ExpenseCategory;
-import com.slamur.app.accounts.model.category.IncomeCategory;
 import com.slamur.app.accounts.model.category.dao.CategoryDaoImpl;
+import com.slamur.app.accounts.model.operation.OperationType;
 import com.slamur.library.daolibrary.base.dao.DaoEvent;
 import com.slamur.library.daolibrary.base.dao.list.ListEvent;
 import com.slamur.library.daolibrary.base.event.Event;
@@ -27,9 +26,7 @@ implements CategoryActivityProvider {
         if (null == instance) {
             instance = new CategoryBaseDao(context);
 
-            List<Category> categories = AccountsSettingsUtils.getIncomeCategories(context);
-            categories.addAll(AccountsSettingsUtils.getExpenseCategories(context));
-
+            List<Category> categories = AccountsSettingsUtils.getCategories(context);
             instance.updateItems(categories);
 
             instance.addListener(instance);
@@ -81,11 +78,8 @@ implements CategoryActivityProvider {
     @Override
     public void onEvent(Event<Category> event) {
         if (this == event.getNotifier()) {
-            Category[] incomes = filterCategoriesOfClass(IncomeCategory.class).toArray(new Category[0]);
-            AccountsSettingsUtils.setStringValue(context, AccountsSettingsUtils.INCOME_CATEGORY_DAO_KEY, GsonUtils.toJson(incomes));
-
-            Category[] expenses = filterCategoriesOfClass(ExpenseCategory.class).toArray(new Category[0]);
-            AccountsSettingsUtils.setStringValue(context, AccountsSettingsUtils.EXPENSE_CATEGORY_DAO_KEY, GsonUtils.toJson(expenses));
+            Category[] categories = getItems().toArray(new Category[0]);
+            AccountsSettingsUtils.setStringValue(context, AccountsSettingsUtils.CATEGORY_DAO_KEY, GsonUtils.toJson(categories));
         } else if (event instanceof ListEvent) {
             ListEvent<Category> listEvent = event.toType();
 
@@ -93,15 +87,17 @@ implements CategoryActivityProvider {
             int index = listEvent.getIndex();
 
             if (listEvent.isAction(DaoEvent.Action.ADD)) {
-                if (category instanceof IncomeCategory) {
-                    this.addIncomeCategory(category.getName(), category.getDescription());
-                } else if (category instanceof ExpenseCategory) {
-                    this.addExpenseCategory(category.getName(), category.getDescription());
-                } else {
-                    throw new UnsupportedOperationException();
-                }
-            } else if (listEvent.isAction(DaoEvent.Action.UPDATE)) {
-                this.updateItem(index, category);
+                this.addItem(category);
+//                switch (category.getType()) {
+//                    case INCOME:
+//                        this.addIncomeCategory(category.getName(), category.getDescription());
+//                        break;
+//                    case EXPENSE:
+//                        this.addExpenseCategory(category.getName(), category.getDescription());
+//                        break;
+//                    default:
+//                        throw new UnsupportedOperationException();
+//                }
             } else if (listEvent.isAction(DaoEvent.Action.REMOVE)) {
                 this.removeItem(index);
             }
@@ -109,11 +105,11 @@ implements CategoryActivityProvider {
     }
 
     @Override
-    public <CategoryType extends Category> void loadCategoriesOfClass(Class<CategoryType> categoryClass) {
-        List<Category> filtered = this.filterCategoriesOfClass(categoryClass);
-
+    public void loadCategoriesOfType(OperationType type) {
         notifyListeners(
-                new ItemsLoadEvent<>(this, filtered)
+                new ItemsLoadEvent<>(
+                        this, filterCategoriesOfType(type)
+                )
         );
     }
 }

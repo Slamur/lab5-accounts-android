@@ -16,8 +16,8 @@
 
         <ImageButton
 
-            android:layout_width="@dimen/account_list_action_button_size"
-            android:layout_height="@dimen/account_list_action_button_size"
+            android:layout_width="@dimen/list_activity_action_button_size"
+            android:layout_height="@dimen/list_activity_action_button_size"
             android:id="@+id/account_list_add_button"
 
             android:background="@android:drawable/ic_input_add"
@@ -28,8 +28,8 @@
 
         <ImageButton
 
-            android:layout_width="@dimen/account_list_action_button_size"
-            android:layout_height="@dimen/account_list_action_button_size"
+            android:layout_width="@dimen/list_activity_action_button_size"
+            android:layout_height="@dimen/list_activity_action_button_size"
             android:id="@+id/account_list_refresh_button"
 
             android:background="@android:drawable/ic_popup_sync"

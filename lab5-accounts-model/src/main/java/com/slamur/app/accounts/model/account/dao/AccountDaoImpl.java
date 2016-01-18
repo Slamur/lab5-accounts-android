@@ -20,7 +20,7 @@ implements AccountDao {
 
     @Override
     protected void setItemInfo(Account item, Object... itemInfo) {
-
+        nextItemId = Math.max(nextItemId, item.getId() + 1);
     }
 
     protected Account createAccount(String name, double balance, String description) {

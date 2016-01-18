@@ -9,11 +9,13 @@ import android.view.MenuItem;
 import com.slamur.app.accounts.android.R;
 import com.slamur.app.accounts.android.activity.category.CategoryActivity;
 import com.slamur.app.accounts.android.activity.category.CategoryListActivity;
+import com.slamur.app.accounts.android.activity.operation.OperationListActivity;
 import com.slamur.app.accounts.android.dao.account.AccountActivityDao;
 import com.slamur.app.accounts.android.dao.account.AccountBaseDao;
 import com.slamur.app.accounts.android.list_view.account.AccountListAdapter;
 import com.slamur.app.accounts.android.provider.account.AccountActivityProvider;
 import com.slamur.app.accounts.model.account.Account;
+import com.slamur.app.accounts.model.operation.OperationType;
 import com.slamur.library.daolibrary.android.activity.list.ListItemActivityImpl;
 import com.slamur.library.daolibrary.base.event.Event;
 
@@ -102,9 +104,9 @@ implements AccountActivity {
         return true;
     }
 
-    protected void startCategoriesListActivity(int categoryTypeExtra) {
+    protected void startCategoriesListActivity(String categoryTypeExtra) {
         Bundle extras = new Bundle();
-        extras.putInt(CategoryActivity.CATEGORY_TYPE_EXTRA, categoryTypeExtra);
+        extras.putString(CategoryActivity.CATEGORY_TYPE_EXTRA, categoryTypeExtra);
 
         startActivity(CategoryListActivity.class, extras);
     }
@@ -113,15 +115,18 @@ implements AccountActivity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
 
         if (getIncomeCategoriesMenuItemId() == item.getItemId()) {
-            startCategoriesListActivity(CategoryActivity.INCOME_TYPE);
+            startCategoriesListActivity(OperationType.INCOME.name());
+            return true;
         }
 
         if (getExpenseCategoriesMenuItemId() == item.getItemId()) {
-            startCategoriesListActivity(CategoryActivity.EXPENSE_TYPE);
+            startCategoriesListActivity(OperationType.EXPENSE.name());
+            return true;
         }
 
         if (getOperationsMenuItemId() == item.getItemId()) {
-            throw new UnsupportedOperationException();
+            startActivity(OperationListActivity.class);
+            return true;
         }
 
         return super.onMenuItemSelected(featureId, item);

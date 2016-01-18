@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">dao-library-android</string>
+    <string name="search_activity_widget_button_description">Search item</string>
 </resources>

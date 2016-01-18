@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/search_activity_widget">
+
+    <ImageButton
+        android:layout_width="@dimen/list_activity_action_button_size"
+        android:layout_height="@dimen/list_activity_action_button_size"
+        android:id="@+id/search_activity_widget_button"
+
+        android:background="@android:drawable/ic_menu_search"
+        android:contentDescription="@string/search_activity_widget_button_description"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_activity_action_button_size"
+        android:id="@+id/search_activity_widget_edit"
+
+        android:textSize="@dimen/search_activity_widget_text_size"
+
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/search_activity_widget_button"/>
+
+</RelativeLayout>

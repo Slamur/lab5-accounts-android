@@ -22,4 +22,18 @@
     <string name="activity_info_category_add_button_text">Add %s category</string>
     <string name="activity_list_categories_label">Categories</string>
     <string name="activity_info_category_label">Category add/show</string>
+    <string name="list_item_operation_remove_button_description">Remove operation</string>
+    <string name="list_item_operation_info_button_description">Show operation info</string>
+    <string name="date_format">dd.MM.yyyy HH:mm</string>
+    <string name="activity_info_operation_add_button_text">Add operation</string>
+    <string name="activity_info_operation_type_label">Operation type: </string>
+    <string name="activity_info_operation_date_label_text">Date:</string>
+    <string name="activity_info_operation_date_picker_default_text">Choose date and time</string>
+    <string name="activity_info_operation_value_label_text">Value:</string>
+    <string name="activity_info_operation_source_label">Source:</string>
+    <string name="activity_info_operation_target_label">Target:</string>
+    <string name="activity_list_operations_refresh_button_description">Refresh operations list</string>
+    <string name="activity_list_operations_add_button_description">Add operation</string>
+    <string name="activity_list_operations_label">Operations</string>
+    <string name="activity_info_operation_label">Operation add/show</string>
 </resources>

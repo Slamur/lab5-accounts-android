@@ -7,10 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 
-import com.slamur.library.daolibrary.android.activity.ItemActivity;
 import com.slamur.library.daolibrary.android.activity.list.ListItemActivity;
 import com.slamur.library.daolibrary.android.dao.ItemActivityDao;
 import com.slamur.library.daolibrary.base.Item;

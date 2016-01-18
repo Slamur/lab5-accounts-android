@@ -19,10 +19,10 @@ public class Operation extends Item {
 
     private final String description;
 
-    public Operation(long id, Date date, OperationType type, Category category, double value, Account source, Account target, String description) {
+    public Operation(long id, Date date, Category category, double value, Account source, Account target, String description) {
         super(id);
         this.date = date;
-        this.type = type;
+        this.type = category.getType();
         this.category = category;
         this.value = value;
         this.source = source;
