@@ -19,7 +19,7 @@ import com.slamur.library.daolibrary.android.list_view.ItemActivityDaoListAdapte
 public class AccountListAdapter extends ItemActivityDaoListAdapterImpl<Account, AccountActivityDao, AccountListActivity, AccountViewHolder> {
 
     public static final String ONLY_THIS_ACCOUNT_MESSAGE = "There are can't be no accounts";
-    private static final String REMOVE_ACCOUNT_DIALOG_TITLE = "Delete account";
+    public static final String REMOVE_ACCOUNT_DIALOG_TITLE = "Delete account";
 
     public AccountListAdapter(AccountListActivity activity) {
         super(activity);

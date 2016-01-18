@@ -71,10 +71,20 @@ implements ItemActivityDaoListAdapter<ItemType> {
         return dao.getItem(position).getId();
     }
 
+    /**
+     * Big thanks for Ekaterina Skorupina for idea about uiThread, you save me!!!
+     */
     @Override
     public void onEvent(Event<ItemType> event) {
         if (event instanceof DaoEvent) {
-            notifyDataSetChanged();
+            activity.toActivity().runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+                    notifyDataSetChanged();
+                }
+            });
+
         }
     }
 

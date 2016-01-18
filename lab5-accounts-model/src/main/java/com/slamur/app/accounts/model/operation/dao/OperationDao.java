@@ -15,6 +15,7 @@ public interface OperationDao extends ListDao<Operation> {
     Operation addRemittanceOperation(Date date, double value, Account source, Account target, String description);
 
     List<Operation> filterBySubstring(String substring);
+    List<Operation> filterByAccount(Account account);
 
     void updateOperationAccounts(Account oldAccount, Account newAccount);
 

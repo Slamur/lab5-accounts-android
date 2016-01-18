@@ -53,6 +53,16 @@ implements OperationDao {
     }
 
     @Override
+    public List<Operation> filterByAccount(final Account account) {
+        return filterItems(new ItemPredicate<Operation>() {
+            @Override
+            public boolean check(Operation item) {
+                return item.getSource().equals(account) || item.getTarget().equals(account);
+            }
+        });
+    }
+
+    @Override
     public void updateOperationAccounts(Account oldAccount, Account newAccount) {
         if (oldAccount.equals(newAccount)) return;
 

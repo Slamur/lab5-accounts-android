@@ -33,7 +33,6 @@ implements AccountActivity {
 
         mBalanceView = AndroidUtils.findViewById(this, getBalanceViewId());
         mBalanceView.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        mBalanceView.setText(Double.toString(0));
 
         mDescriptionView = AndroidUtils.findViewById(this, getDescriptionViewId());
     }
